@@ -36,7 +36,7 @@ module Knapsack
       def self.test_path(object)
         if ::Cucumber::VERSION.to_i >= 2
           test_case = object
-          test_case.location.file
+          test_case.location.to_s
         else
           if object.respond_to?(:scenario_outline)
             if object.scenario_outline.respond_to?(:feature)

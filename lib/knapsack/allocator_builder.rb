@@ -1,7 +1,8 @@
 module Knapsack
   class AllocatorBuilder
-    def initialize(adapter_class)
+    def initialize(adapter_class, all_tests: nil)
       @adapter_class = adapter_class
+      @all_tests = all_tests
       set_report_path
     end
 
@@ -9,6 +10,7 @@ module Knapsack
       Knapsack::Allocator.new({
         report: Knapsack.report.open,
         test_file_pattern: test_file_pattern,
+        all_tests: @all_tests,
         ci_node_total: Knapsack::Config::Env.ci_node_total,
         ci_node_index: Knapsack::Config::Env.ci_node_index
       })
